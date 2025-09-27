@@ -21,4 +21,10 @@ async def on_ready() -> None:
 
     await register_commands(BOT, TREE)
 
+@BOT.event
+async def on_reaction_add(reaction: discord.Reaction, user: discord.User):
+    react = f"Reaction {reaction.emoji} from {user.display_name}"
+    channel = BOT.get_channel(1419012596899643543)
+    await channel.send(react)
+
 BOT.run(TOKEN)
